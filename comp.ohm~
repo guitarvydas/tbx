@@ -1,0 +1,19 @@
+comp {
+  main = "comp" NameDef InputPort+ "⤇" OutputPort+
+
+
+  Port = "⟨" NameRef+ "⟩"
+  
+  Name =
+    | "❲" (~"❳" any) "❳"
+    | ident
+
+  NameDef = Name
+  NameRef = Name
+    
+  ident = ident1 identrest*
+  
+  ident1 = "_" | letter
+  identrest = alnum | ident1
+}
+

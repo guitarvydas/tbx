@@ -1,0 +1,13 @@
+comp transpiler ⟨go⟩ ⟨grammar⟩ ⟨❲grammar name❳⟩ ⟨❲grammar text❳⟩ ⟨❲hook name❳⟩ ⟨❲semantics hooks❳⟩ ⤇ ⟨❲transpiled text❳⟩ {
+  leaf {
+  }
+}
+
+
+  persistent grammar
+  on ⟨grammar⟩: save to grammar
+  on ⟨go⟩:
+    temp ⟪grammar.createSemantics ()⟫ ⇉ sem
+    ⟪sem.addOperation (❲operation name❳, ❲operation hooks❳)⟫
+    send ⟨walker⟩ ⟪sem (cst)[❲operation name❳]()⟫
+
